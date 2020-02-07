@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <script type="module">
+import init, { greet } from './pkg/hello_wasm.js'
+
+(async () => {
+  await init();
+  console.log(greet("World"));
+})();
+    </script>
+  </body>
+</html>
