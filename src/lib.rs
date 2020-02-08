@@ -7,7 +7,14 @@ extern "C" {
     pub fn alert(s: &str);
 }
 
+#[wasm_bindgen(module = "/src/hello.js")]
+extern "C" {
+    pub fn reply_greet(s: &str);
+}
+
 #[wasm_bindgen]
 pub fn greet(name: &str) {
-    alert(&format!("Hello, {}!", name));
+    let s = format!("Hello, {}!", name);
+    alert(&s);
+    reply_greet(&s);
 }
