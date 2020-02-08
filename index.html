@@ -3,12 +3,17 @@
   <head>
   </head>
   <body>
+    <script type="text/javascript">
+function simple_greet(s) {
+  console.log("simple " + s);
+}
+    </script>
     <script type="module">
 import init, { greet } from './pkg/hello_wasm.js'
 
 (async () => {
   await init();
-  console.log(greet("World"));
+  greet("World");
 })();
     </script>
   </body>
