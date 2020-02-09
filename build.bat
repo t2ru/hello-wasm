@@ -1,2 +1,2 @@
-cargo build --target wasm32-unknown-unknown
-wasm-bindgen target\wasm32-unknown-unknown\debug\hello_wasm.wasm --out-dir .\pkg --target web
+cargo build --target wasm32-unknown-unknown --release
+wasm-bindgen target\wasm32-unknown-unknown\release\hello_wasm.wasm --out-dir .\pkg --target web
