@@ -1,0 +1,12 @@
+[tasks.build-wasm]
+command = "cargo"
+args = ["build", "--target=wasm32-unknown-unknown"]
+
+[tasks.wasm-bindgen]
+install_crate = "wasm-bindgen-cli"
+command = "wasm-bindgen"
+args = ["target/wasm32-unknown-unknown/debug/hello_wasm.wasm", "--out-dir=./pkg", "--target=web"]
+dependencies = ["build-wasm"]
+
+[tasks.build]
+dependencies = ["wasm-bindgen"]
