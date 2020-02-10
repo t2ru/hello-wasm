@@ -1,6 +1,15 @@
+[env]
+CARGO_MAKE_RUST_TARGET_TRIPLE = "wasm32-unknown-unknown"
+
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
 [tasks.build-wasm]
 command = "cargo"
-args = ["build", "--target=wasm32-unknown-unknown"]
+args = ["build"]
+dependencies = ["format"]
 
 [tasks.wasm-bindgen]
 install_crate = "wasm-bindgen-cli"
@@ -10,3 +19,8 @@ dependencies = ["build-wasm"]
 
 [tasks.build]
 dependencies = ["wasm-bindgen"]
+
+[tasks.run]
+command = "python"
+args = ["./httpserver.py"]
+dependencies = ["build"]
